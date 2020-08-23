@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head') %>
+    <link type="css" rel="stylesheet" href="css/style.css">
+</head>
+
+<header>
+    <h1>My Tech-watch Assignator</h1>
+    <nav>
+        <a class="btn btn-primary" href="http://localhost:8080/home" role="button">Home</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/students" role="button">Student List</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/history" role="button">History</a></button>
+    </nav>
+</header>
+
+<body>
+
+    <section class="list">
+        <ul>
+            <% subjectBBB.forEach(function(subject) { %>
+            <li class="subjectName">
+                <h4><%= subject.name %>&nbsp(<%= subject.students.length%>)</h4>
+            </li>
+            <% subject.students.forEach(function(student){ %>
+            <li><%= student.name %></li>
+            <% }); %>
+      
+        <li><%= subject.date %></li>
+        <% }); %>
+        </ul>
+    </section>
+            <h5>Add tech-watch</h5>
+    <div class="addtechwatch">
+        <form action="/subject" method="POST">
+            <label for="insertsubject" class="label">Subject</label>
+            <label for="insertdeadline" class="label">Deadline</label>
+            <label for="insertnbrstudent" class="label">Number Students</label>
+            <input type="text" placeholder="Project Name" name="project">
+            <input type="date" name="deadline" id="start">
+            <input type="text" placeholder="Group Members" name='nbr'>         
+            <button type="submit">Create Tech-watch</button> 
+        </form>
+    </div>
+
+    </body> 
+
+    <footer>
+        <%- include ('../partials/footer') %>
+    </footer>
+
+
+
+</html>

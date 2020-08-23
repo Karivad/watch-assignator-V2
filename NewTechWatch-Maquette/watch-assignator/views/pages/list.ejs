@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head') %>
+    <link type="css" rel="stylesheet" href="css/style.css">
+</head>
+
+<header>
+    <h1>My Tech-watch Assignator</h1>
+    <nav>
+        <a class="btn btn-primary" href="http://localhost:8080/home" role="button">Home</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/assignation" role="button">Tech-watch Assignation</a></button>
+        <a class="btn btn-primary" href="http://localhost:8080/history" role="button">History</a></button>
+    </nav>
+</header>
+
+<body>
+    <h2>List of students</h2>
+    <ul>
+        <% studentsAAA.forEach(function(student) { %>
+        <li><%= student.name %></li>
+        <% }); %>
+    </ul>
+    <div class="addName">
+        <form action="/students" method="POST" class="form">
+            <label for="insertname" class="label">Add student</label>
+            <input type="text" placeholder="name" name="name">
+            <button type="submit">Add student</button>
+        </form>
+    </div>
+    <div class="deleteName">
+        <form action="/students-delete" method="POST" class="form">
+            <label for="insertname" class="label">Delete student</label>
+            <select name="deletename" id="">
+                <% studentsAAA.forEach(function(student) { %>
+                <option value="<%= student.name %>"><%= student.name %></option>
+                <% }); %>
+            </select>
+         <button type="submit">Delete student</button>
+        </form>
+    </div>
+</body>
+
+<footer>
+    <%- include ('../partials/footer') %>
+</footer>
+
+</html>
